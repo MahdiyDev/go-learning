@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package todo;
+
+option go_package = "./todo";
+
+message TodoMessage {
+    string title = 1;
+    string context = 2;
+}
+
+message TodoMessageGetResponse {
+    repeated TodoMessage todos = 1;
+}
+
+service TodoService {
+    rpc GetAll(TodoMessage) returns (TodoMessageGetResponse) {}
+    rpc Create(TodoMessage) returns (TodoMessage) {}
+}
